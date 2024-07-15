@@ -52,3 +52,9 @@
 - 蓝桥学院课程《算法很美》和《数据结构并不难》课程的算法随堂笔记及练习
 - 笔记博客链接：https://www.cnblogs.com/zsh-blogs/category/1398484.html
 - 时间：2019年12月4日
+
+### bingimages
+- bing每日壁纸自动下载工具
+- 自动爬取bing壁纸并进行下载和打包
+- 打包地址：localhost:12345/bing
+- 时间：2020年3月29日

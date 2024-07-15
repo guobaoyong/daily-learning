@@ -1,0 +1,7 @@
+server:
+  port: 12345
+
+# \u9ED8\u8BA4\u4E0B\u8F7D\u8DEF\u5F84
+downloadPath: /home/bingimages
+# bing压缩包地址
+zipPath: /home/bingzip

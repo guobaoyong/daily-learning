@@ -30,3 +30,8 @@
 - BIO、NIO、AIO三者的技术实现
 - Netty：TCP 程序实现
 - 时间：2019年3月4日
+
+### CerificationCodeTest
+- 腾讯云滑动验证码+阿里云手机短信
+- kaptcha实现的验证码
+- 时间：2019年3月10日

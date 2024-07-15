@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>腾讯验证码测试</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+    <script>
+        window.callback = function(res){
+            console.log(res)
+            // res（未通过验证）= {ret: 1, ticket: null}
+            // res（验证成功） = {ret: 0, ticket: "String", randstr: "String"}
+            var ticket = res.ticket;
+            var randstr = res.randstr;
+            console.log(ticket+"\n"+randstr)
+            if(res.ret === 0){
+                /*alert(res.ticket)   // 票据*/
+                $.ajax({
+                    async: false,
+                    cache: false,
+                    type: 'GET',
+                    url: '/check',
+                    data: {ticket:ticket,randstr:randstr},
+                    error: function () {
+                        alert("请重试")
+                    },
+                    success: function (message) {
+                        //alert("成功")
+                        console.log(message);
+                        if (message >= 60){
+                            alert("恶意攻击");
+                        } else {
+                            alert("正常");
+                        }
+                    }
+                });
+            }else if (res.ret === 1){
+                alert("验证失败！")
+            }
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+----------------------滑动验证码
+<button id="TencentCaptcha"
+        data-appid="XXXXX"
+        data-cbfn="callback">验证</button>
+<br>
+----------------------手机验证码
+
+
+<br><br><br><br>
+-------------Kaptcha验证码
+<h1 th:text="${info}"/>
+<div>
+    <img alt="验证码" onclick="this.src='/defaultKaptcha?d='+new Date()*1" src="/defaultKaptcha"/>
+</div>
+<form action="/verifyCode" method="post">
+    <input type="text" name="verifyCode"/>
+    <input type="submit" value="提交"/>
+</form>
+</body>
+</html>

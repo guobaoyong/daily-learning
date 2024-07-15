@@ -24,3 +24,9 @@
 - 技术选型：Spring Boot 2.1.1 + Thymeleaf + Maven
 - 数据库：MySQL
 - 时间：2018年12月15日
+
+### echo
+- Java网络通讯
+- BIO、NIO、AIO三者的技术实现
+- Netty：TCP 程序实现
+- 时间：2019年3月4日

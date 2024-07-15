@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wlgzs.springbootshiro.dao.UserDao">
+    <resultMap id="BaseResultMap" type="org.wlgzs.springbootshiro.domain.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="perms" jdbcType="VARCHAR" property="perms" />
+    </resultMap>
+
+    <select id="findByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from user where name = #{name}
+    </select>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from user where id = #{id}
+    </select>
+
+</mapper>

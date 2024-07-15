@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拷贝功能测试</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    *复制提示js代码
+    *
+    *http://ihuan.me
+    */
+    function warning(){
+        if(navigator.userAgent.indexOf("MSIE")>0)  {
+            art.dialog.alert('复制成功！若要转载请务必保留原文链接，申明来源，谢谢合作！');
+        } else {
+            alert("复制成功！若要转载请务必保留原文链接，申明来源，谢谢合作！");
+        }
+    }
+    document.body.oncopy=function(){warning();}
+</script>
+<div>
+    <p>
+        本段文字用于拷贝时，弹窗提示。
+    </p>
+    <p>
+        本段文字用于拷贝时，弹窗提示。
+    </p>
+    <p>
+        本段文字用于拷贝时，弹窗提示。
+    </p>
+    <p>
+        本段文字用于拷贝时，弹窗提示。
+    </p>
+    <p>
+        本段文字用于拷贝时，弹窗提示。
+    </p>
+</div>
+</body>
+</html>

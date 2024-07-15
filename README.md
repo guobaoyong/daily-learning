@@ -46,3 +46,9 @@
 - 框架参考文档：http://webmagic.io/docs/zh/
 - XPath语法：http://www.w3school.com.cn/xpath/xpath_syntax.asp
 - 时间：2019年4月9日
+
+### lanqiaobei
+- 备战2019年省赛蓝桥杯
+- 蓝桥学院课程《算法很美》和《数据结构并不难》课程的算法随堂笔记及练习
+- 笔记博客链接：https://www.cnblogs.com/zsh-blogs/category/1398484.html
+- 时间：2019年12月4日

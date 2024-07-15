@@ -39,3 +39,10 @@
 ### interview_atguigu_seasonone
 - 尚硅谷面试第一季公开视频，测试代码
 - 时间：2019年3月31日
+
+### webmagic
+- webmagic爬虫获取工作室成员最近一篇总结博客
+- 适用于博客园、CSDN博客、简书
+- 框架参考文档：http://webmagic.io/docs/zh/
+- XPath语法：http://www.w3school.com.cn/xpath/xpath_syntax.asp
+- 时间：2019年4月9日

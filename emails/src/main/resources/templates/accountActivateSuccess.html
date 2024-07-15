@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>帐户激活结果</title>
+</head>
+<body>
+<span th:text="${user.getUsername()}"></span>
+<s th:if="${user.getActivated() eq true}">
+    <span style='color:green;'>激活成功！</span>
+</s>
+<s th:if="${user.getActivated() eq false}">
+    <span style='color:red;'>激活失败！</span>
+</s>
+</body>
+</html>

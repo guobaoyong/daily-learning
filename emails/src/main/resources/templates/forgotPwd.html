@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>重设密码申请</title>
+</head>
+<body>
+	<form th:action="@{/forgotPwd}" th:method="post">
+		用户名/邮箱：<input type="text" name="userNameOrEmail" /><span style="color: red" th:text="${errorMsg}"></span><br/>
+		<input type="submit" value="提交" /><a href=""></a>
+	</form>
+</body>
+</html>

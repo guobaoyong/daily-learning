@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>修改成功</title>
+</head>
+<body>
+<s th:text="${user.getUsername()}"></s>资料修改成功，
+你的新email地址为：<s th:text="${user.getEmail()}"></s>，请到邮箱中去激活你的帐户。
+</body>
+</html>

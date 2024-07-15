@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>修改用户信息</title>
+<style type="text/css">
+	.error {
+		color: red;
+		padding-left:2px;
+	}
+</style>
+</head>
+<body>
+<form th:action="@{/update(id = ${user.getId()})}" th:method="post">
+		用户名：<input type="text" name="username" th:value="${user.getUsername()}" readonly="readonly"><br/>
+		email：<input type="text" name="email" th:value="${user.getEmail()}"><span class="error" th:text="${errors.email}"></span><br/>
+		<input type="submit" value="修改">
+	</form>
+</body>
+</html>

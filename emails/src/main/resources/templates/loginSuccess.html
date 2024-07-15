@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录成功</title>
+</head>
+<body>
+<s th:if="${user.getActivated() eq false}">
+    <s th:text="${user.getUsername()}"></s>，尚未激活，请到邮箱中查看帐户激活邮件，并点击帐户激活链接将帐户激活。<br/>
+    如果激活邮件已丢失，请点击<a th:href="@{/applyActivateLink(id = ${user.getId()})}">申请激活链接</a>，系统将重新发送激链接到你的邮箱。<br/>
+    如果注册时填写的邮箱帐户不正确，请点击<a th:href="@{/updateUI(id = ${user.getId()})}">修改个人信息</a>，填写正确的email地址，系统将重新发送帐户激活链接到你的邮箱。
+</s>
+<s th:if="${user.getActivated() eq true}">
+    <s th:text="${user.getUsername()}"></s>，欢迎你！<a th:href="@{/updateUI(id = ${user.getId()})}">修改个人信息</a>
+</s>
+</body>
+</html>

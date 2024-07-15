@@ -1,0 +1,27 @@
+#默认使用配置
+spring:
+    profiles:
+        active: dev
+    datasource:
+        url: jdbc:mysql://localhost:3306/account?useSSL=false&serverTimezone=UTC       #数据库地址+数据库名字(自定义)
+        username: root                              #帐号(自定义)
+        password: root                              #密码(自定义)
+        driver-class-name: com.mysql.cj.jdbc.Driver    #驱动
+    thymeleaf:
+        mode: HTML5
+        encoding: UTF-8
+        cache: false
+        prefix: classpath:/templates/
+        suffix: .html
+        servlet:
+            content-type: text/html
+
+#公共配置与profiles选择无关
+mybatis:
+    typeAliasesPackage: org.wlgzs.emails.model
+    mapperLocations: classpath:mapper/*.xml
+server:
+    port: 8081
+logging:
+    level:
+        org.wlgzs.emails.dao: debug

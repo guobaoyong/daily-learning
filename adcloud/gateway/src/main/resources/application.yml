@@ -1,0 +1,25 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+zuul:
+  # 请求前缀
+  prefix: /adcloud
+  routes:
+    sponsor:
+      path: /sponsor/**
+      serviceId: eureka-client-sponsor
+      # 跳过前缀
+      strip-prefix: false
+    search:
+      path: /search/**
+      serviceId: eureka-client-search
+      strip-prefix: false

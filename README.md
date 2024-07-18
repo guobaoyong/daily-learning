@@ -124,3 +124,8 @@
 ### enjoysharing
 - 知新享阅微信小程序
 - 时间：2019年11月10日
+
+### adcloud
+- Spring Cloud 微服务架构设计实现广告系统
+- 慕课网视频地址：https://coding.imooc.com/class/310.html
+- 时间：2019年10月20日

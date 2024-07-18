@@ -100,3 +100,8 @@
 - 从天气项目看 Spring Cloud 微服务治理
 - 慕课网视频地址：https://coding.imooc.com/class/177.html
 - 时间：2019年7月7日
+
+### soufun
+- 海屋搜房平台
+- 慕课网视频地址：[https://coding.imooc.com/class/167.html](https://coding.imooc.com/class/167.html)
+- 时间：2019年9月6日

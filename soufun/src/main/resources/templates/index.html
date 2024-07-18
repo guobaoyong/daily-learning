@@ -1,0 +1,89 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta http-equiv="Content-language" content="zh-CN"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="applicable-device" content="pc">
+
+    <title>海屋搜房平台</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link href="/static/css/main.css" rel='stylesheet' type='text/css'/>
+    <link href="/static/css/index.css" rel='stylesheet' type='text/css'/>
+</head>
+<body>
+<header th:replace="common :: header"></header>
+
+<div class="city-change animated bounceIn" style="display: block;">
+    <span class="close"></span>
+    <div class="title">选择城市
+        <span class="city-tab">
+            <span class="code1">热门城市:</span>
+            <a href="/rent/house?cityEnName=bj" title="北京租房">北京</a>
+            <a href="/rent/house?cityEnName=sh" title="上海租房">上海</a>
+            <a href="/rent/house?cityEnName=gz" title="广州租房">广州</a>
+            <a href="/rent/house?cityEnName=sz" title="深圳租房">深圳</a>
+        </span>
+    </div>
+    <div class="title-line"></div>
+    <div class="fc-main clear">
+        <div class="fl citys-l">
+            <ul>
+                <s th:each="str : ${chars}">
+                    <li class="clear" th:each="city : ${allCities}"><span class="code-title fl"  th:if="${city.getEnName().subSequence(0,1).toString().toUpperCase() == str}" th:text="${str}"></span>
+                        <div class="city-enum fl" th:if="${city.getEnName().subSequence(0,1).toString().toUpperCase() == str}">
+                            <a th:href="@{/rent/house(cityEnName=${city.getEnName()})}" th:text="${city.getCnName()}"></a>
+                        </div>
+                    </li>
+                </s>
+            </ul>
+        </div>
+        <div class="fl citys-r">
+            <ul>
+                <s th:each="str : ${chars2}">
+                    <li class="clear" th:each="city : ${allCities}"><span class="code-title fl"  th:if="${city.getEnName().subSequence(0,1).toString().toUpperCase() == str}" th:text="${str}"></span>
+                        <div class="city-enum fl" th:if="${city.getEnName().subSequence(0,1).toString().toUpperCase() == str}">
+                            <a th:href="@{/rent/house(cityEnName=${city.getEnName()})}" th:text="${city.getCnName()}"></a>
+                        </div>
+                    </li>
+                </s>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div th:include="common :: footer"></div>
+<script th:inline="javascript" type="text/javascript">
+    $(function () {
+        $('.xunwu-header .index-page').addClass('on');
+
+        function msgTip(content) {
+            layer.open({
+                type: 1,
+                offset: '100px',
+                area: ['420px', '240px'],
+                skin: 'layui-layer-lan', //样式类名
+                closeBtn: 1, //显示关闭按钮
+                anim: 2,
+                shadeClose: true, //开启遮罩关闭
+                content: content,
+                time: 2000
+            });
+        }
+
+        var msg = [[${msg}]];
+        if (msg === 'must_chose_city') {
+            msgTip('<p class="msgTip">你必须选择一个城市</p>');
+        } else if (msg === 'not_support_city') {
+            msgTip('<p class="msgTip">暂不支持所选城市</p>');
+        } else {
+            // TODO
+        }
+    });
+</script>
+</body>
+</html>

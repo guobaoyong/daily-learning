@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:include="admin/common :: head"></div>
+    <link rel="stylesheet" type="text/css" href="/static/lib/webuploader/0.1.5/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/admin/house-edit.css">
+    <title>编辑用户</title>
+</head>
+<body>
+<div>
+    <content class="page-container">
+        <form class="form form-horizontal" id="form-user-edit" th:object="${user}">
+            <input name="id" type="hidden" th:value="*{id}">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="用户名信息" id="name"
+                           name="name" th:value="*{name}">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">密码：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="password" class="input-text" value="" placeholder="不输入即保持原来的密码" id="password"
+                           name="password">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">邮箱：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="请输入邮箱信息" id="email"
+                           name="email" th:value="*{email}">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>手机号：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="请输入手机号信息" id="phoneNumber"
+                           name="phoneNumber" required th:value="*{phoneNumber}">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">角色：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="radio" class="input-radio" value="USER"
+                           name="role" th:checked="*{role eq 'USER'}">普通用户
+                    <input type="radio" class="input-radio" value="ADMIN"
+                           name="role" th:checked="*{role eq 'ADMIN'}">管理员
+                </div>
+            </div>
+
+            <div class="uploader-list-container" style=" width: 60%; height: 30%; position: relative;
+                margin-left:17%;">
+                <div class="queueList">
+                    <div id="dndArea" class="placeholder">
+                        <div id="filePicker-2"></div>
+                        <p>或将照片拖到这里，单次最多可选5张</p>
+                    </div>
+                </div>
+                <div class="statusBar" style="display:none;">
+                    <div class="progress"><span class="text">0%</span> <span class="percentage"></span></div>
+                    <div class="info"></div>
+                    <div class="btns">
+                        <div id="filePicker2"></div>
+                        <div class="uploadBtn">开始上传</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">头像：</label>
+                <div id="upload-cover-container" class="formControls col-xs-8 col-sm-9">
+                    <!-- 封面列表 -->
+                    <span>请先上传图片，从中选择头像；不上传即保存原来的头像</span>
+                </div>
+                <!--<input id="cover" type="hidden" value=""/>-->
+            </div>
+
+            <div class="upload-photo-ids-container">
+                <!--这里放上传OK图片的信息 在表单中一起上传-->
+            </div>
+
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <button class="btn btn-primary radius" type="submit"><i
+                            class="Hui-iconfont">&#xe632;</i> 更新
+                    </button>
+                    <!--<button onClick="layer_close();" class="btn btn-default radius"-->
+                    <button onClick="removeIframe();" class="btn btn-default radius"
+                            type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;
+                    </button>
+                </div>
+            </div>
+        </form>
+    </content>
+</div>
+
+<footer th:include="admin/common :: footer"></footer>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="/static/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="/static/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="/static/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="/static/lib/webuploader/0.1.5/webuploader.min.js"></script>
+<script type="text/javascript" src="/static/js/admin/upload.js"></script>
+<script type="text/javascript" src="/static/js/admin/user-edit.js"></script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

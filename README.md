@@ -80,3 +80,8 @@
 - 黑马头条项目
 - B站视频地址：https://www.bilibili.com/video/BV1Qs4y1v7x4
 - 时间：2020年2月29日
+
+### dianping
+- ES7 + Spark 构建高相关性搜索服务&千人千面推荐系统
+- 慕课网视频地址：https://coding.imooc.com/class/391.html
+- 时间：2019年12月18日

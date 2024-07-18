@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heima.wemedia.mapper.WmNewsMaterialMapper"><!--namespace 的值是SQL映射文件所对应的mapper接口的全类名-->
+
+    <insert id="insertBatch">
+        insert into wm_news_material (news_id, material_id, type, ord)
+        values
+        <foreach collection="wmNewsMaterials" item="item" index="ord" separator=",">
+            (#{item.newsId},#{item.materialId},#{item.type},#{ord})
+        </foreach>
+    </insert>
+</mapper>

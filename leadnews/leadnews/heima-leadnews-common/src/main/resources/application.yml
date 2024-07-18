@@ -1,0 +1,22 @@
+#全局端口定义server:
+spring:
+  aop:
+    proxy-target-class: true
+server:
+  tomcat:
+    uri-encoding: utf-8
+  servlet:
+    # 全局字符集设置
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+aliyun:
+  access-key-id: LTAI5tCowaQtL5KBeNMKRdzD
+  access-key-secret: qrjYi7Cpk5MJIrhMhRHAI9J8Typl2w

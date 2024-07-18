@@ -1,0 +1,11 @@
+com.heima.common.exception.ExceptionCatch
+com.baomidou.mybatisplus.autoconfigure.DdlApplicationRunner
+com.heima.common.config.SwaggerConfig
+com.heima.common.aliyun.green.v2.util.AliYunProperties
+com.heima.common.aliyun.green.v2.GreenTextScan
+com.heima.common.aliyun.green.v2.GreenImageScan
+com.heima.common.aliyun.green.v1.GreenTextScan
+com.heima.common.aliyun.green.v1.GreenImageScan
+com.heima.common.aliyun.oss.OssFileUploader
+com.heima.common.tess4j.Tess4jClient
+com.heima.common.redis.CacheService

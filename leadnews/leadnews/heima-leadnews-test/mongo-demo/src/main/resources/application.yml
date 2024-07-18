@@ -1,0 +1,12 @@
+server:
+  port: 9998
+spring:
+  data:
+    mongodb:
+      host: 192.168.110.133
+      port: 27017
+      database: leadnews-history
+      username: admin
+      password: 123456
+      authentication-database: admin
+      uri: mongodb://admin:123456@192.168.110.133/leadnews-history?authSource=admin

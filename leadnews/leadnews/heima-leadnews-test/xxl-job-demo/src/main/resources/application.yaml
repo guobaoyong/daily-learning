@@ -1,0 +1,11 @@
+server:
+  port: ${server-port:8881}
+xxl:
+  job:
+    admin:
+      addresses: http://192.168.110.133:8888/xxl-job-admin
+    executor:
+#      appname: xxl-job-executor-sample
+      appname: xxl-job-sharding-sample
+      port: ${xxl-job-executor-port:9999}
+    accessToken: default_token

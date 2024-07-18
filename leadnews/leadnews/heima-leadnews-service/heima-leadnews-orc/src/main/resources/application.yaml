@@ -1,0 +1,27 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: heima-leadnews-orc
+  #  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.110.133:3306/leadnews_wemedia?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=Asia/Shanghai
+#    username: root
+#    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        # nacos服务注册中心地址
+        server-addr: 192.168.110.133:8848
+        username: nacos
+        password: nacos
+      config:
+        server-addr: 192.168.110.133:8848
+        group: DEFAULT_GROUP
+        file-extension: yaml
+        username: nacos
+        password: nacos
+      server-addr: 192.168.110.133:8848
+  config:
+    import:
+      - optional:nacos:${spring.application.name}.${spring.cloud.nacos.config.file-extension}

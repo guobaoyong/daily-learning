@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qqzsh.top.project.admin.phonebook.mapper.TPhonebookMapper">
+    
+    <resultMap type="TPhonebook" id="TPhonebookResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="phonenumber"    column="phoneNumber"    />
+        <result property="telenumber"    column="teleNumber"    />
+        <result property="workaddress"    column="workAddress"    />
+        <result property="homeaddress"    column="homeAddress"    />
+        <result property="image"    column="image"    />
+        <result property="remark"    column="remark"    />
+        <result property="initial"    column="initial"    />
+        <result property="userid"    column="userId"    />
+    </resultMap>
+
+    <sql id="selectTPhonebookVo">
+        select id, name, phoneNumber, teleNumber, workAddress, homeAddress, image, remark, initial, userId from t_phonebook
+    </sql>
+
+    <select id="selectTPhonebookList" parameterType="TPhonebook" resultMap="TPhonebookResult">
+        <include refid="selectTPhonebookVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="phonenumber != null  and phonenumber != ''"> and phoneNumber = #{phonenumber}</if>
+            <if test="telenumber != null  and telenumber != ''"> and teleNumber = #{telenumber}</if>
+            <if test="workaddress != null  and workaddress != ''"> and workAddress = #{workaddress}</if>
+            <if test="homeaddress != null  and homeaddress != ''"> and homeAddress = #{homeaddress}</if>
+            <if test="image != null  and image != ''"> and image = #{image}</if>
+            <if test="initial != null  and initial != ''"> and initial = #{initial}</if>
+            <if test="userid != null "> and userId = #{userid}</if>
+        </where>
+    </select>
+    
+    <select id="selectTPhonebookById" parameterType="Long" resultMap="TPhonebookResult">
+        <include refid="selectTPhonebookVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTPhonebook" parameterType="TPhonebook">
+        insert into t_phonebook
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">id,</if>
+            <if test="name != null  and name != ''">name,</if>
+            <if test="phonenumber != null  and phonenumber != ''">phoneNumber,</if>
+            <if test="telenumber != null  and telenumber != ''">teleNumber,</if>
+            <if test="workaddress != null  and workaddress != ''">workAddress,</if>
+            <if test="homeaddress != null  and homeaddress != ''">homeAddress,</if>
+            <if test="image != null  and image != ''">image,</if>
+            <if test="remark != null  and remark != ''">remark,</if>
+            <if test="initial != null  and initial != ''">initial,</if>
+            <if test="userid != null ">userId,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">#{id},</if>
+            <if test="name != null  and name != ''">#{name},</if>
+            <if test="phonenumber != null  and phonenumber != ''">#{phonenumber},</if>
+            <if test="telenumber != null  and telenumber != ''">#{telenumber},</if>
+            <if test="workaddress != null  and workaddress != ''">#{workaddress},</if>
+            <if test="homeaddress != null  and homeaddress != ''">#{homeaddress},</if>
+            <if test="image != null  and image != ''">#{image},</if>
+            <if test="remark != null  and remark != ''">#{remark},</if>
+            <if test="initial != null  and initial != ''">#{initial},</if>
+            <if test="userid != null ">#{userid},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTPhonebook" parameterType="TPhonebook">
+        update t_phonebook
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null  and name != ''">name = #{name},</if>
+            <if test="phonenumber != null  and phonenumber != ''">phoneNumber = #{phonenumber},</if>
+            <if test="telenumber != null  and telenumber != ''">teleNumber = #{telenumber},</if>
+            <if test="workaddress != null  and workaddress != ''">workAddress = #{workaddress},</if>
+            <if test="homeaddress != null  and homeaddress != ''">homeAddress = #{homeaddress},</if>
+            <if test="image != null  and image != ''">image = #{image},</if>
+            <if test="remark != null  and remark != ''">remark = #{remark},</if>
+            <if test="initial != null  and initial != ''">initial = #{initial},</if>
+            <if test="userid != null ">userId = #{userid},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTPhonebookById" parameterType="Long">
+        delete from t_phonebook where id = #{id}
+    </delete>
+
+    <delete id="deleteTPhonebookByIds" parameterType="String">
+        delete from t_phonebook where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="count" resultType="Long">
+        select count(*) from t_phonebook
+    </select>
+    
+</mapper>

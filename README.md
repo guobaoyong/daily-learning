@@ -115,3 +115,8 @@
 - JSP私人日志系统
 - Java1234视频地址：http://www.java1234.com/a/yuanchuang/diary/
 - 时间：2018年11月5日
+
+### addressbook
+- 通讯录系统
+- Java1234视频地址：http://www.java1234.com/a/yuanchuang/vuetxl/
+- 时间：2019年11月18日

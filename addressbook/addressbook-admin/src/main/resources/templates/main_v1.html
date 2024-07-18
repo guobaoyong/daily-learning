@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>统计</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/animate.min.css" th:href="@{/css/main/animate.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/style.min862f.css" th:href="@{/css/main/style.min862f.css}" rel="stylesheet"/>
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right">总</span>
+                    <h5>用户数</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">[[${userNum}]]</h1>
+                    <div class="stat-percent font-bold text-success">
+                    </div>
+                    <small>总用户数</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-info pull-right">总</span>
+                    <h5>通讯录</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">[[${articleNums}]]</h1>
+                    <div class="stat-percent font-bold text-info">
+                    </div>
+                    <small>总通讯录数</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-right">总</span>
+                    <h5>运行时长</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">[[${bookNums}]]</h1>
+                    <div class="stat-percent font-bold text-navy">
+                    </div>
+                    <small>系统总运行时长</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/ajax/libs/flot/jquery.flot.js}"></script>
+
+<th:block th:include="include :: sparkline-js" />
+</body>
+</html>

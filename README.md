@@ -85,3 +85,8 @@
 - ES7 + Spark 构建高相关性搜索服务&千人千面推荐系统
 - 慕课网视频地址：https://coding.imooc.com/class/391.html
 - 时间：2019年12月18日
+
+### hy-music
+= 嗨乐播放器软件
+- 慕课网视频地址：https://coding.imooc.com/class/373.html
+- 时间：2019年11月28日

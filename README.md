@@ -120,3 +120,7 @@
 - 通讯录系统
 - Java1234视频地址：http://www.java1234.com/a/yuanchuang/vuetxl/
 - 时间：2019年11月18日
+
+### enjoysharing
+- 知新享阅微信小程序
+- 时间：2019年11月10日

@@ -95,3 +95,8 @@
 - 嗨抖短视频平台
 - 慕课网视频地址：https://coding.imooc.com/class/217.html
 - 时间：2019年6月6日
+
+### weather
+- 从天气项目看 Spring Cloud 微服务治理
+- 慕课网视频地址：https://coding.imooc.com/class/177.html
+- 时间：2019年7月7日

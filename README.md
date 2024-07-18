@@ -105,3 +105,8 @@
 - 海屋搜房平台
 - 慕课网视频地址：[https://coding.imooc.com/class/167.html](https://coding.imooc.com/class/167.html)
 - 时间：2019年9月6日
+
+### news
+- 新闻发布系统
+- Java1234视频地址：http://www.java1234.com/a/yuanchuang/news/
+- 时间：2019年1月5日

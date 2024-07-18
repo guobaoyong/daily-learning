@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="header">
+    <div class="header_left">
+        <div class="header_title">
+            <p><b>系统数据总览</b></p>
+        </div>
+    </div>
+    <div class="header_clear"></div>
+</div>
+<div class="introduce">
+    <div class="introduce_essay">
+        <p class="number" th:text="${userCount}"></p>
+        <p class="essay">用户数量</p>
+    </div>
+    <div class="introduce_essay discuss">
+        <p class="number" th:text="${reportCount}"></p>
+        <p class="essay">待处理举报数量</p>
+    </div>
+    <div class="introduce_essay accessory">
+        <p class="number" th:text="${videoCount}"></p>
+        <p class="essay">视频数量</p>
+    </div>
+    <div class="introduce_essay days">
+        <p class="number" th:text="${bgmCount}"></p>
+        <p class="essay">背景音乐数量</p>
+    </div>
+</div>
+
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本系统是基于微信小程序和spring boot2.X 开发的嗨抖短视频项目。
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术选型：
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;核心框架 <span style="background-color: rgb(255, 255, 0);">SpringBoot</span>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库&nbsp;<span style="background-color: rgb(255, 255, 0);">MyBatis Plus，Mysql，Druid</span>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中间件&nbsp;<span style="background-color: rgb(255, 255, 0);">zookeeper，redis，swagger2</span>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;视频处理&nbsp;<span style="background-color: rgb(255, 255, 0);">FFmpeg</span>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前端框架&nbsp;<span style="background-color: rgb(255, 255, 0);">Bootstrap ，Jquery，LayUI</span>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前端分页组件&nbsp;<span style="background-color: rgb(255, 255, 0);">jqGrid</span>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开发说明：本项目基于Java防抖音项目开发。
+</p>
+<p>
+    <br/>
+</p>
+
+
+
+</body>
+</html>

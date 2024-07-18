@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>会员列表-WeAdmin Frame型后台管理系统-WeAdmin 1.0</title>
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<link rel="stylesheet" th:href="@{/css/font.css}">
+		<link rel="stylesheet" th:href="@{/css/weadmin.css}">
+		<link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}">
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+		  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+		  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="weadmin-nav">
+			<span class="layui-breadcrumb">
+				<a href="javascript:;">首页</a> <a href="javascript:;">用户管理</a>
+				<a href="javascript:;"> <cite>用户列表</cite></a>
+			</span>
+			<a class="layui-btn layui-btn-sm" style="margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+			 title="刷新">
+				<i class="layui-icon layui-icon-refresh"></i>
+			</a>
+		</div>
+
+		<div class="weadmin-body">
+			<div class="layui-row">
+				<form class="layui-form layui-col-md12 we-search">
+					用户搜索：
+					<div class="layui-inline">
+						<input type="text" id="search_value" placeholder="请输入用户名" autocomplete="off" class="layui-input" th:value="${search_value}"/>
+					</div>
+					<a class="layui-btn" lay-submit="" lay-filter="sreach" id="search">
+						<i class="layui-icon layui-icon-search"></i>
+					</a>
+				</form>
+			</div>
+			<div class="weadmin-block">
+				<button class="layui-btn" id="add">
+					<i class="layui-icon layui-icon-add-circle-fine"></i>添加
+				</button>
+				<span class="fr" style="line-height:40px">角色修改时，0代表管理员，1代表普通用户</span>
+			</div>
+			<table id="userList" lay-filter="test" class="layui-table"></table>
+			<script type="text/html" id="barDemo">
+				<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+			</script>
+			<span id="headerUserId" th:text="${session.admin.getId()}" style="display: none"></span>
+			<span id="headerUserToken" th:text="${session.admin.getUserToken()}" style="display: none"></span>
+		</div>
+		<script th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+		<script th:src="@{/js/jquery.min.js}" charset="utf-8"></script>
+		<script type="text/javascript" th:inline="none">
+			layui.use('table',function () {
+				var table = layui.table;
+				var  headerUserId = document.getElementById("headerUserId").innerText;
+				var  headerUserToken = document.getElementById("headerUserToken").innerText;
+
+				//第一个实例
+				table.render({
+					elem: '#userList'
+					,url: '/admin/userList' //数据接口
+					,method: 'get'
+					,headers:{
+						headerUserId: headerUserId,
+						headerUserToken: headerUserToken
+					}
+					,cols: [[ //表头
+						{field: 'id', title: 'ID',  sort: true, fixed: 'left'}
+						,{field: 'username', title: '用户名', edit: 'text'}
+						,{field: 'password', title: '密码',
+									templet: function(d){
+										return '********';
+									},edit:'text'}
+						,{field: 'fans_counts', title: '粉丝数',  sort: true}
+						,{field: 'follow_counts', title: '关注数',sort: true}
+						,{field: 'receive_like_counts', title: '收到赞数',sort: true}
+						,{field: 'role', title: '角色',
+							templet: function(d){
+							if (d.role == '0')
+								return '管理员';
+							else if (d.role == '1') 
+								return '普通用户';
+							},edit:'text'}
+						,{fixed: 'right',  align:'center', toolbar: '#barDemo',title:'操作'}
+					]]
+					,page:true
+				});
+
+				//监听工具条
+				table.on('tool(test)', function(obj){
+					var data = obj.data;
+					if(obj.event === 'del'){
+						layer.confirm('真的删除行么', function(index){
+							$.ajax({
+								type:"post",
+								url:"/admin/user_delete",
+								data:{
+									id:data.id,
+								},
+								headers:{
+									headerUserId: headerUserId,
+									headerUserToken: headerUserToken
+								},
+								dataType:"json",    // 数据返回类型
+								success:function(result){    // 成功返回的结果(响应)
+									console.info(result);
+									if (result.status == 500){
+										layer.msg(result.msg);
+									}else if (result.status == 200){
+										layer.msg('删除成功！');
+										obj.del();
+										layer.close(index);
+									}
+								}
+							});
+
+						});
+					}
+				});
+
+				//监听单元格实时编辑
+				table.on('edit(test)',function(obj){
+					var value = obj.value //得到修改后的值
+							,data = obj.data //得到所在行所有键值
+							,field = obj.field; //得到字段
+					$.ajax({
+						type:"post",
+						url:"/admin/user_update",
+						data:{
+							id:data.id,
+							field:field,
+							value:value
+						},
+						headers:{
+							headerUserId: headerUserId,
+							headerUserToken: headerUserToken
+						},
+						dataType:"json",
+						success:function(data){
+							console.log(data);
+							if (data.status == 200){
+								layer.msg('修改成功！');
+							} else if (data.status == 500){
+								layer.msg(data.msg);
+							}
+							table.reload('userList',{
+								url: '/admin/userList' //数据接口
+								,method: 'get'
+								,headers:{
+									headerUserId: headerUserId,
+									headerUserToken: headerUserToken
+								}
+								,page: true //开启分页
+								,cols: [[ //表头
+									{field: 'id', title: 'ID',  sort: true, fixed: 'left'}
+									,{field: 'username', title: '用户名', edit: 'text'}
+									,{field: 'password', title: '密码',
+										templet: function(d){
+											return '********';
+										},edit:'text'}
+									,{field: 'fans_counts', title: '粉丝数',  sort: true}
+									,{field: 'follow_counts', title: '关注数', sort: true}
+									,{field: 'receive_like_counts', title: '收到赞数', sort: true}
+									,{field: 'role', title: '角色',
+										templet: function(d){
+											if (d.role == '0')
+												return '管理员';
+											else if (d.role == '1')
+												return '普通用户';
+										},edit:'text'}
+									,{fixed: 'right', align:'center', toolbar: '#barDemo',title:'操作'}
+								]]
+							});
+						}
+					});
+				});
+
+				$("#search").click(function () {
+					var search_value = document.getElementById("search_value").value;
+					table.reload('userList',{
+						url: '/admin/userList?search_value='+search_value //数据接口
+						,method: 'get'
+						,headers:{
+							headerUserId: headerUserId,
+							headerUserToken: headerUserToken
+						},data:{
+							search_value:search_value
+						}
+						,page: true //开启分页
+						,cols: [[ //表头
+							{field: 'id', title: 'ID',  sort: true, fixed: 'left'}
+							,{field: 'username', title: '用户名', edit: 'text'}
+							,{field: 'password', title: '密码',
+								templet: function(d){
+									return '********';
+								},edit:'text'}
+							,{field: 'fans_counts', title: '粉丝数', sort: true}
+							,{field: 'follow_counts', title: '关注数',sort: true}
+							,{field: 'receive_like_counts', title: '收到赞数',sort: true}
+							,{field: 'role', title: '角色',
+								templet: function(d){
+									if (d.role == '0')
+										return '管理员';
+									else if (d.role == '1')
+										return '普通用户';
+								},edit:'text'}
+							,{fixed: 'right', align:'center', toolbar: '#barDemo',title:'操作'}
+						]]
+					});
+				});
+
+			});
+
+			$("#add").click(function () {
+				layer.open({
+					type:2,
+					content:'/admin/judge/user_add',
+					area:[($(window).width() * 0.9) + 'px',($(window).height() -50)+'px'],
+					fix: false, //不固定
+					maxmin: true,
+					shadeClose: true,
+					shade: 0.4,
+					title:'用户添加'
+				});
+			});
+		</script>
+		<!--<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>-->
+
+<!--		<script th:src="@{js/eleDel.js}" type="text/javascript" charset="utf-8"></script>-->
+	</body>
+</html>

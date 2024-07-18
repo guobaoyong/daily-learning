@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/searchVideo/searchVideo",
+    "pages/userLogin/login",
+    "pages/videoinfo/videoinfo",
+    "pages/report/report",
+    "pages/videotest/videotest",
+    "pages/mine/mine",
+    "pages/chooseBgm/chooseBgm",
+    "pages/userRegist/regist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "嗨抖短视频",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

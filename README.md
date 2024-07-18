@@ -90,3 +90,8 @@
 = 嗨乐播放器软件
 - 慕课网视频地址：https://coding.imooc.com/class/373.html
 - 时间：2019年11月28日
+
+### hddsp
+- 嗨抖短视频平台
+- 慕课网视频地址：https://coding.imooc.com/class/217.html
+- 时间：2019年6月6日
